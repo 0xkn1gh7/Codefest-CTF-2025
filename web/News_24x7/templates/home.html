@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block subtitle %}Home{% endblock %}
+
+{% block content %}
+<div class="m-5">
+{%for i in articles%}
+<a class="fs-2 fw-bold text-black text-decoration-none article-title" href="{{ url_for('article', article_id=i['id']) }}">{{ i['title'] }}</a>
+<br>
+<hr>
+{%endfor%}
+</div>
+{% endblock %}

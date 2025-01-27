@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block subtitle %}Home{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-success fw-bold" role="alert">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+    <h1 class="text-center mb-4">Dashboard</h1>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="dashboard-card text-center">
+                <h4 class="card-title">Bank Balance</h4>
+                <p class="display-5 text-primary">₹{{ balance }}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dashboard-card text-center">
+                <h4 class="card-title">Wallet Balance</h4>
+                <p class="display-5 text-success">₹{{ cash }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h3 class="text-center mb-4">Withdraw Money</h3>
+        <form method="POST" action="/">
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount to Withdraw</label>
+                <input type="number" class="form-control" id="amount" name="amount" min="1" placeholder="Enter amount" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Withdraw</button>
+        </form>
+        {% if error %}
+        <br>
+        <div class="alert alert-danger fw-bold" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

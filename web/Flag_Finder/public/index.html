@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload ZIP File</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+	    <h3>Upload files/folder (zipped into a single file)</h3><h4> to search for the flag</h4>
+        <input type="file" id="fileInput" accept=".zip">
+        <br>
+        <input type="text" id="toFindInput" placeholder="Insert a known word in flag (e.g. Codefest)">
+        <br>
+        <button id="uploadBtn" disabled>Upload ZIP</button>
+        <p id="status"></p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

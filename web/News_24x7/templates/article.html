@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block subtitle %}{{article[1]}}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Article Details -->
+            <div class="card mb-4">
+                <div class="card-header text-center">
+                    <h1>{{ article[1] }}</h1>
+                </div>
+                <div class="card-body">
+                    <p>{{ article[2] }}</p>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Comments</h4>
+                </div>
+                <div class="card-body">
+                    {% if comments %}
+                        <ul class="list-group">
+                            {% for comment, username in comments %}
+                                <li class="list-group-item">
+                                    <strong>{{ username }}:</strong>
+                                    <span>{{ comment|safe }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No comments yet. Be the first to comment!</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Add Comment Form -->
+            {% if session.get('user_id') %}
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('article', article_id=article[0]) }}">
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Add a Comment</label>
+                                <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Write your comment here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info text-center">
+                    <p><a href="{{ url_for('login') }}">Log in</a> to add a comment.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

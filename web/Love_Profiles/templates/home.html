@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block subtitle %}Home{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4">User Profiles</h1>
+    <div class="row g-4">
+        {% for user in users %}
+        <div class="col-md-4">
+            <div class="profile-card text-center d-flex flex-column">
+                <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+                <p class="text-muted">Age: {{ user.age }}</p>
+                <p class="text-muted">Gender: {{ user.gender }}</p>
+                <p class="text-secondary">{{ user.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
