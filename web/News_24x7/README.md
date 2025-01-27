@@ -39,7 +39,7 @@ fetch('/article/1', {
 })
 </script>
 ```
-After sometime, you will see a commend by token containing his cookie. Use it to access `/secret` and you will see the flag.
+After sometime, you will see a comment by admin containing his cookie. Use it to access `/secret` and you will see the flag.
 
 ## Flag
 `CodefestCTF{st0r3d_X55_ftw_[a-zA-Z0-9]{9}}`
